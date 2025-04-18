@@ -33,6 +33,8 @@ class Program
         StartChat();
 
         PrintDivider();
+
+        ShowLoading();
     }
 
     static void DisplayAsciiArt()
@@ -86,12 +88,14 @@ class Program
 
             if (string.IsNullOrWhiteSpace(question))
             {
+                ShowLoading();
                 TypeResponse("🤖 Bot: I didn't quite understand that. Could you rephrase?");
                 continue;
             }
 
             if (question == "exit") //type exit to end chat with chatbot
             {
+                ShowLoading();
                 TypeResponse("👋 Goodbye! Stay safe online!");
                 break;
             }
@@ -100,16 +104,19 @@ class Program
             {
                 case "how are you?":
                 case "how are you":
+                    ShowLoading();
                     TypeResponse("🤖 Bot: I'm doing great, thank you! Always ready to help you stay safe online.");
                     break;
 
                 case "what's your purpose?":
                 case "what is your purpose?":
+                    ShowLoading();
                     TypeResponse("🤖 Bot: I'm here to teach you how to stay safe from cyber threats like phishing, weak passwords, and unsafe browsing.");
                     break;
 
                 case "what can i ask you about?":
                 case "help":
+                    ShowLoading();
                     TypeResponse("🤖 Bot: You can ask me about:");
                     Console.WriteLine(" - Password safety");
                     Console.WriteLine(" - Phishing scams");
@@ -121,10 +128,12 @@ class Program
                     break;
 
                 case "phishing":
+                    ShowLoading();
                     TypeResponse("🎣 Phishing Tip: Don't click on suspicious links in emails or messages, even if they look legit. Always verify the sender.");
                     break;
 
                 case "safe browsing":
+                    ShowLoading();
                     TypeResponse("🌐 Browsing Tip: Use HTTPS sites, avoid downloading from untrusted sources, and keep your browser updated.");
                     break;
 
@@ -161,6 +170,21 @@ class Program
     {
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.WriteLine("\n-----------------------------------------------\n");
+        Console.ResetColor();
+    }
+
+    static void ShowLoading(string message = "🤖 Thinking", int dotCount = 3, int delay = 400)
+    {
+        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.Write(message);
+
+        for (int i = 0; i < dotCount; i++)
+        {
+        Thread.Sleep(delay); // delay between each dot
+        Console.Write(".");
+        }
+
+        Console.WriteLine(); // move to next line after animation
         Console.ResetColor();
     }
 
