@@ -15,8 +15,13 @@ class Program
             Console.WriteLine("Error playing audio: " + ex.Message);
         }
 
+        Console.Clear();     // Optional: clears console before showing chatbot UI
+
         Console.WriteLine("Welcome to the Cybersecurity Awareness Bot!");
         // Continue with the rest of your chatbot...
+
+        DisplayAsciiArt();
+
     }
 
     static void DisplayAsciiArt()
@@ -37,5 +42,6 @@ class Program
         ");
         Console.ResetColor();
     }
+
 }
 
