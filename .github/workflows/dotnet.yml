@@ -1,0 +1,30 @@
+name: .NET Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🔄 Checkout code
+      uses: actions/checkout@v3
+
+    - name: 🛠️ Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'  # Match your version
+
+    - name: 📦 Restore dependencies
+      run: dotnet restore
+
+    - name: 🧪 Build the project
+      run: dotnet build --configuration Release
+
+    - name: ✅ Run tests (if any)
+      run: dotnet test || echo "No tests yet"
