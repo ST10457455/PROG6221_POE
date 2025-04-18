@@ -5,6 +5,11 @@ class Program
 {
     static void Main(string[] args)
     {
+        
+        Console.Clear();     // Optional: clears console before showing chatbot UI
+
+        AskUserName();
+        
         // Play voice greeting on macOS using afplay
         try
         {
@@ -15,7 +20,7 @@ class Program
             Console.WriteLine("Error playing audio: " + ex.Message);
         }
 
-        Console.Clear();     // Optional: clears console before showing chatbot UI
+        
 
         Console.WriteLine("Welcome to the Cybersecurity Awareness Bot!");
         // Continue with the rest of your chatbot...
@@ -40,6 +45,22 @@ class Program
 
             Cybersecurity Awareness Bot        
         ");
+        Console.ResetColor();
+    }
+
+    static void AskUserName()
+    {
+        Console.Write("\n👋 Hello! What's your name? ");
+        string name = Console.ReadLine()!;
+
+        while (string.IsNullOrWhiteSpace(name))
+        {
+            Console.Write("❗ Please enter a valid name: ");
+            name = Console.ReadLine()!;
+        }
+
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"\n✅ Welcome, {name}! I'm here to help you stay safe online.");
         Console.ResetColor();
     }
 
