@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 
 class Program
 {
@@ -26,6 +27,8 @@ class Program
         // Continue with the rest of your chatbot...
 
         DisplayAsciiArt();
+
+        DisplayHeader();
 
         StartChat();
     }
@@ -80,13 +83,13 @@ class Program
 
             if (string.IsNullOrWhiteSpace(question))
             {
-                Console.WriteLine("🤖 Bot: I didn't quite understand that. Could you rephrase?");
+                TypeResponse("🤖 Bot: I didn't quite understand that. Could you rephrase?");
                 continue;
             }
 
             if (question == "exit") //type exit to end chat with chatbot
             {
-                Console.WriteLine("👋 Goodbye! Stay safe online!");
+                TypeResponse("👋 Goodbye! Stay safe online!");
                 break;
             }
 
@@ -94,39 +97,61 @@ class Program
             {
                 case "how are you?":
                 case "how are you":
-                    Console.WriteLine("🤖 Bot: I'm doing great, thank you! Always ready to help you stay safe online.");
+                    TypeResponse("🤖 Bot: I'm doing great, thank you! Always ready to help you stay safe online.");
                     break;
 
                 case "what's your purpose?":
                 case "what is your purpose?":
-                    Console.WriteLine("🤖 Bot: I'm here to teach you how to stay safe from cyber threats like phishing, weak passwords, and unsafe browsing.");
+                    TypeResponse("🤖 Bot: I'm here to teach you how to stay safe from cyber threats like phishing, weak passwords, and unsafe browsing.");
                     break;
 
                 case "what can i ask you about?":
                 case "help":
-                    Console.WriteLine("🤖 Bot: You can ask me about:");
+                    TypeResponse("🤖 Bot: You can ask me about:");
                     Console.WriteLine(" - Password safety");
                     Console.WriteLine(" - Phishing scams");
                     Console.WriteLine(" - Safe browsing tips");
                     break;
 
                 case "password safety":
-                    Console.WriteLine("🔐 Password Tip: Use a mix of uppercase, lowercase, numbers, and symbols. Avoid using the same password across sites.");
+                    TypeResponse("🔐 Password Tip: Use a mix of uppercase, lowercase, numbers, and symbols. Avoid using the same password across sites.");
                     break;
 
                 case "phishing":
-                    Console.WriteLine("🎣 Phishing Tip: Don't click on suspicious links in emails or messages, even if they look legit. Always verify the sender.");
+                    TypeResponse("🎣 Phishing Tip: Don't click on suspicious links in emails or messages, even if they look legit. Always verify the sender.");
                     break;
 
                 case "safe browsing":
-                    Console.WriteLine("🌐 Browsing Tip: Use HTTPS sites, avoid downloading from untrusted sources, and keep your browser updated.");
+                    TypeResponse("🌐 Browsing Tip: Use HTTPS sites, avoid downloading from untrusted sources, and keep your browser updated.");
                     break;
 
                 default:
-                    Console.WriteLine("🤖 Bot: Oops! That’s not something I know about yet. Try asking 'how are you' or 'password safety'.");
+                    TypeResponse("🤖 Bot: Oops! That’s not something I know about yet. Try asking 'how are you' or 'password safety'.");
                     break;
             }
         }
+
+    }
+
+    static void DisplayHeader()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("╔══════════════════════════════════════════════╗");
+            Console.WriteLine("║        🛡️ Cybersecurity Awareness Bot        ║");
+            Console.WriteLine("╚══════════════════════════════════════════════╝");
+            Console.ResetColor();
+        }
+
+    static void TypeResponse(string message)
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        foreach (char c in message)
+        {
+            Console.Write(c);
+            Thread.Sleep(30); // Adjust speed here
+        }
+    Console.WriteLine();
+    Console.ResetColor();
     }
 
 }
