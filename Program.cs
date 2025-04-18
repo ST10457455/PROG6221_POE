@@ -31,6 +31,8 @@ class Program
         DisplayHeader();
 
         StartChat();
+
+        PrintDivider();
     }
 
     static void DisplayAsciiArt()
@@ -76,6 +78,7 @@ class Program
 
         while (true)
         {
+            PrintDivider();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("🧠 You: ");
             string? question = Console.ReadLine()?.ToLower().Trim();
@@ -152,6 +155,13 @@ class Program
         }
     Console.WriteLine();
     Console.ResetColor();
+    }
+
+    static void PrintDivider()
+    {
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine("\n-----------------------------------------------\n");
+        Console.ResetColor();
     }
 
 }
