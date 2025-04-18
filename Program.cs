@@ -60,6 +60,7 @@ class Program
             name = Console.ReadLine()!;
         }
 
+
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"\n✅ Welcome, {name}! I'm here to help you stay safe online.");
         Console.ResetColor();
@@ -122,7 +123,7 @@ class Program
                     break;
 
                 default:
-                    Console.WriteLine("🤖 Bot: Hmm, I don’t recognize that question yet. Try asking about 'phishing' or 'password safety'.");
+                    Console.WriteLine("🤖 Bot: Oops! That’s not something I know about yet. Try asking 'how are you' or 'password safety'.");
                     break;
             }
         }
