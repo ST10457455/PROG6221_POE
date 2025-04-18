@@ -95,7 +95,6 @@ class Program
 
             if (question == "exit") //type exit to end chat with chatbot
             {
-                ShowLoading();
                 TypeResponse("👋 Goodbye! Stay safe online!");
                 break;
             }
