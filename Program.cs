@@ -27,6 +27,7 @@ class Program
 
         DisplayAsciiArt();
 
+        StartChat();
     }
 
     static void DisplayAsciiArt()
@@ -62,6 +63,69 @@ class Program
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"\n✅ Welcome, {name}! I'm here to help you stay safe online.");
         Console.ResetColor();
+    }
+
+    static void StartChat()
+    {
+        Console.WriteLine("\n💬 You can now ask me cybersecurity questions!");
+        Console.WriteLine("Type 'exit' to end the chat.\n");
+
+        while (true)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("🧠 You: ");
+            string? question = Console.ReadLine()?.ToLower().Trim();
+            Console.ResetColor();
+
+            if (string.IsNullOrWhiteSpace(question))
+            {
+                Console.WriteLine("🤖 Bot: I didn't quite understand that. Could you rephrase?");
+                continue;
+            }
+
+            if (question == "exit") //type exit to end chat with chatbot
+            {
+                Console.WriteLine("👋 Goodbye! Stay safe online!");
+                break;
+            }
+
+            switch (question)
+            {
+                case "how are you?":
+                case "how are you":
+                    Console.WriteLine("🤖 Bot: I'm doing great, thank you! Always ready to help you stay safe online.");
+                    break;
+
+                case "what's your purpose?":
+                case "what is your purpose?":
+                    Console.WriteLine("🤖 Bot: I'm here to teach you how to stay safe from cyber threats like phishing, weak passwords, and unsafe browsing.");
+                    break;
+
+                case "what can i ask you about?":
+                case "help":
+                    Console.WriteLine("🤖 Bot: You can ask me about:");
+                    Console.WriteLine(" - Password safety");
+                    Console.WriteLine(" - Phishing scams");
+                    Console.WriteLine(" - Safe browsing tips");
+                    break;
+
+                case "password safety":
+                    Console.WriteLine("🔐 Password Tip: Use a mix of uppercase, lowercase, numbers, and symbols. Avoid using the same password across sites.");
+                    break;
+
+                case "phishing":
+                    Console.WriteLine("🎣 Phishing Tip: Don't click on suspicious links in emails or messages, even if they look legit. Always verify the sender.");
+                    break;
+
+                case "safe browsing":
+                    Console.WriteLine("🌐 Browsing Tip: Use HTTPS sites, avoid downloading from untrusted sources, and keep your browser updated.");
+                    break;
+
+                default:
+                    Console.WriteLine("🤖 Bot: Hmm, I don’t recognize that question yet. Try asking about 'phishing' or 'password safety'.");
+                    break;
+            }
+        }
     }
 
 }
