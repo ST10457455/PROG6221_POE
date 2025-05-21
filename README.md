@@ -114,7 +114,10 @@ ChatbotApp/
 ├── .github/
 │   └── workflows/dotnet.yml  # CI config
 ├── README.md
+
+
 🧠 Future Enhancements (Part 3)
+
 🧩 Advanced topic recognition (phishing, password tips, social engineering)
 
 🎮 Mini-games and quizzes on cybersecurity
