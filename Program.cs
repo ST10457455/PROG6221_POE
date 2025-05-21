@@ -9,7 +9,7 @@ class Program
         
         Console.Clear();     // Optional: clears console before showing chatbot UI
 
-        AskUserName();
+        
         
         // Play voice greeting on macOS using afplay
         try
@@ -28,6 +28,8 @@ class Program
 
         DisplayAsciiArt();
 
+        AskUserName();
+        
         DisplayHeader();
 
         StartChat();
@@ -73,9 +75,16 @@ class Program
         Console.ResetColor();
     }
 
+    static Dictionary<string, string> keywordResponses = new Dictionary<string, string>()
+    {
+        { "password", "🔐 Password Tip: Use a mix of uppercase, lowercase, numbers, and symbols. Avoid using the same password across sites." },
+        { "scam", "🚨 Scam Alert: Watch out for messages asking for personal details or urgent action. They're usually scams." },
+        { "privacy", "🕵️ Privacy Tip: Avoid oversharing on social media. Adjust your privacy settings and stay cautious." }
+    };
+
     static void StartChat()
     {
-        Console.WriteLine("\n💬 You can now ask me cybersecurity questions!");
+        Console.WriteLine("\n You can now ask me cybersecurity questions!");
         Console.WriteLine("Type 'exit' to end the chat.\n");
 
         while (true)
@@ -99,47 +108,18 @@ class Program
                 break;
             }
 
-            switch (question)
+            //Keyword Recognition
+            string? matchedKeyword = keywordResponses.Keys.FirstOrDefault(K => question.Contains(K));
+            if (matchedKeyword != null)
             {
-                case "how are you?":
-                case "how are you":
-                    ShowLoading();
-                    TypeResponse("🤖 Bot: I'm doing great, thank you! Always ready to help you stay safe online.");
-                    break;
-
-                case "what's your purpose?":
-                case "what is your purpose?":
-                    ShowLoading();
-                    TypeResponse("🤖 Bot: I'm here to teach you how to stay safe from cyber threats like phishing, weak passwords, and unsafe browsing.");
-                    break;
-
-                case "what can i ask you about?":
-                case "help":
-                    ShowLoading();
-                    TypeResponse("🤖 Bot: You can ask me about:");
-                    Console.WriteLine(" - Password safety");
-                    Console.WriteLine(" - Phishing scams");
-                    Console.WriteLine(" - Safe browsing tips");
-                    break;
-
-                case "password safety":
-                    TypeResponse("🔐 Password Tip: Use a mix of uppercase, lowercase, numbers, and symbols. Avoid using the same password across sites.");
-                    break;
-
-                case "phishing":
-                    ShowLoading();
-                    TypeResponse("🎣 Phishing Tip: Don't click on suspicious links in emails or messages, even if they look legit. Always verify the sender.");
-                    break;
-
-                case "safe browsing":
-                    ShowLoading();
-                    TypeResponse("🌐 Browsing Tip: Use HTTPS sites, avoid downloading from untrusted sources, and keep your browser updated.");
-                    break;
-
-                default:
-                    TypeResponse("🤖 Bot: Oops! That’s not something I know about yet. Try asking 'how are you' or 'password safety'.");
-                    break;
+                ShowLoading();
+                TypeResponse(keywordResponses[matchedKeyword]);
+                continue;
             }
+
+            //Default response if no keyword is matched
+            ShowLoading();
+            TypeResponse("🤖 Bot: Hmm, I’m not sure about that. Try asking about passwords, scams, or privacy.");
         }
 
     }
