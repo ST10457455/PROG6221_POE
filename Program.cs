@@ -88,11 +88,14 @@ class Program
         "🎣 Phishing Tip: Never click on suspicious links, even if the email looks legitimate. Always verify the sender.",
         "🎣 Phishing Tip: Look for spelling errors or strange email addresses – they’re red flags for phishing attempts."
     };
+    static Random random = new Random();
 
     static void StartChat()
     {
         Console.WriteLine("\n You can now ask me cybersecurity questions!");
         Console.WriteLine("Type 'exit' to end the chat.\n");
+
+        string lastTopic = ""; //Keeps track of the last topic discussed 
 
         while (true)
         {
@@ -113,6 +116,41 @@ class Program
             {
                 TypeResponse("👋 Goodbye! Stay safe online!");
                 break;
+            }
+
+            // Check if user is asking for more info
+            if (question.Contains("more") || question.Contains("explain") || question.Contains("why"))
+            {
+                ShowLoading();
+
+                switch (lastTopic)
+                {
+                    case "password":
+                        TypeResponse("🔐 Extra Tip: Consider using a password manager like Bitwarden or LastPass to safely store and generate strong passwords.");
+                        break;
+                    case "scam":
+                        TypeResponse("🚨 More Info: Scammers often create a sense of urgency. Always pause and verify the source before acting.");
+                        break;
+                    case "privacy":
+                        TypeResponse("🕵️ Extra Tip: Be cautious about sharing location data. Review app permissions on your devices regularly.");
+                        break;
+                    case "phishing":
+                        TypeResponse("🎣 More Info: Phishing emails often look real but contain subtle errors. Always hover over links to see where they lead.");
+                        break;
+                    default:
+                        TypeResponse("🤖 Bot: Hmm, I need a bit more context to give you more info. Try asking about passwords, scams, or privacy.");
+                        break;
+                }
+                continue;
+            }
+
+            //Random response for phishing
+            if (question.Contains("phishing"))
+            {
+                string randomTip = phishingTips[random.Next(phishingTips.Count)];
+                ShowLoading();
+                TypeResponse(randomTip);
+                continue;
             }
 
             //Keyword Recognition
