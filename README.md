@@ -28,11 +28,8 @@ South Africa has seen a rise in cyberattacks, including phishing, malware, and i
 
 ### ✅ Part 1:
 ✅ Voice greeting at startup  
-
 ✅ ASCII Art Logo for visual flair  
-
 ✅ Name-based personalization  
-
 ✅ Answers to common questions like:
   - "How are you?"
   - "What's your purpose?"
@@ -41,9 +38,7 @@ South Africa has seen a rise in cyberattacks, including phishing, malware, and i
   - "How do I create a strong password?"
     
 ✅ Input validation for unknown or blank entries 
-
 ✅ Typing effect and console UI formatting 
-
 ✅ GitHub version control with CI/CD via GitHub Actions
 
 ### 🧠 Part 2 Enhancements:
