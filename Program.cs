@@ -82,6 +82,13 @@ class Program
         { "privacy", "🕵️ Privacy Tip: Avoid oversharing on social media. Adjust your privacy settings and stay cautious." }
     };
 
+    static List<string> phishingTips = new List<string>()
+    {   
+        "🎣 Phishing Tip: Be cautious of emails asking for personal information. Scammers often disguise themselves as trusted organisations.",
+        "🎣 Phishing Tip: Never click on suspicious links, even if the email looks legitimate. Always verify the sender.",
+        "🎣 Phishing Tip: Look for spelling errors or strange email addresses – they’re red flags for phishing attempts."
+    };
+
     static void StartChat()
     {
         Console.WriteLine("\n You can now ask me cybersecurity questions!");

@@ -109,7 +109,4 @@ ChatbotApp/
 
 📋 Interactive tip checklist
 
-🎥 Final video presentation
-
-
-
+🎥 Final video presentation 
