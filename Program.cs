@@ -92,6 +92,8 @@ class Program
     static List<string> positiveWords = new List<string> { "good", "great", "awesome", "fantastic", "thank", "thanks" };
     static List<string> negativeWords = new List<string> { "bad", "terrible", "annoyed", "angry", "upset", "frustrated" };
 
+    static List<string> memory = new List<string>();
+
     static Random random = new Random();
 
     static void StartChat()
@@ -135,6 +137,33 @@ class Program
             {
                 TypeResponse("👋 Goodbye! Stay safe online!");
                 break;
+            }
+
+            // Memory recall trigger
+            if (question == "what did we talk about?")
+            {
+                ShowLoading();
+                if (memory.Count == 0)
+                {
+                    TypeResponse("🤖 Bot: We haven't talked about anything yet. Ask me something!");
+                }
+                else
+                {
+                    TypeResponse("🤖 Bot: So far, we've discussed:");
+
+                    foreach (var item in memory.Distinct())
+                    {
+                        Console.WriteLine(" - " + item);
+                    }
+                }
+                continue;
+            }   
+        
+
+        // Add question or keyword to memory if not empty
+            if (!string.IsNullOrWhiteSpace(question))
+            {
+                memory.Add(question);
             }
 
             // Check if user is asking for more info
