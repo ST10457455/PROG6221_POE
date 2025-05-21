@@ -105,116 +105,144 @@ class Program
 
         while (true)
         {
-            PrintDivider();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("🧠 You: ");
-            string? question = Console.ReadLine()?.ToLower().Trim();
-            Console.ResetColor();
-
-            // Sentiment detection
-            if (question != null && positiveWords.Any(word => question.Contains(word)))
+            try
             {
-                ShowLoading();
-                TypeResponse("😊 I'm glad you're feeling positive! Let me know if you need help with anything.");
-                continue;
-            }
 
-            if (question != null && negativeWords.Any(word => question.Contains(word)))
-            {
-                ShowLoading();
-                TypeResponse("😟 I'm sorry you're feeling that way. I'm here to help you stay safe online. Ask me anything!");
-                continue;
-            }
+                PrintDivider();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("🧠 You: ");
+                string? question = Console.ReadLine()?.ToLower().Trim();
+                Console.ResetColor();
 
-            if (string.IsNullOrWhiteSpace(question))
-            {
-                ShowLoading();
-                TypeResponse("🤖 Bot: I didn't quite understand that. Could you rephrase?");
-                continue;
-            }
-
-            if (question == "exit") //type exit to end chat with chatbot
-            {
-                TypeResponse("👋 Goodbye! Stay safe online!");
-                break;
-            }
-
-            // Memory recall trigger
-            if (question == "what did we talk about?")
-            {
-                ShowLoading();
-                if (memory.Count == 0)
+                // Handle null or whitespace input early
+                if (string.IsNullOrWhiteSpace(question))
                 {
-                    TypeResponse("🤖 Bot: We haven't talked about anything yet. Ask me something!");
+                    ShowLoading();
+                    TypeResponse("🤖 Bot: I didn't quite understand that. Could you rephrase?");
+                    continue;
                 }
-                else
-                {
-                    TypeResponse("🤖 Bot: So far, we've discussed:");
 
-                    foreach (var item in memory.Distinct())
+                // Limit input length to avoid abuse or performance issues
+                if (question.Length > 200)
+                {
+                    ShowLoading();
+                    TypeResponse("🤖 Bot: That's a bit too long for me to process. Could you shorten it?");
+                    continue;
+                }
+
+                // Sentiment detection
+                if (question != null && positiveWords.Any(word => question.Contains(word)))
+                {
+                    ShowLoading();
+                    TypeResponse("😊 I'm glad you're feeling positive! Let me know if you need help with anything.");
+                    continue;
+                }
+
+                if (question != null && negativeWords.Any(word => question.Contains(word)))
+                {
+                    ShowLoading();
+                    TypeResponse("😟 I'm sorry you're feeling that way. I'm here to help you stay safe online. Ask me anything!");
+                    continue;
+                }
+
+                if (string.IsNullOrWhiteSpace(question))
+                {
+                    ShowLoading();
+                    TypeResponse("🤖 Bot: I didn't quite understand that. Could you rephrase?");
+                    continue;
+                }
+
+                if (question == "exit") //type exit to end chat with chatbot
+                {
+                    TypeResponse("👋 Goodbye! Stay safe online!");
+                    break;
+                }
+
+                // Memory recall trigger
+                if (question == "what did we talk about?")
+                {
+                    ShowLoading();
+                    if (memory.Count == 0)
                     {
-                        Console.WriteLine(" - " + item);
+                        TypeResponse("🤖 Bot: We haven't talked about anything yet. Ask me something!");
                     }
-                }
-                continue;
-            }   
-        
+                    else
+                    {
+                        TypeResponse("🤖 Bot: So far, we've discussed:");
 
-        // Add question or keyword to memory if not empty
-            if (!string.IsNullOrWhiteSpace(question))
-            {
+                        foreach (var item in memory.Distinct())
+                        {
+                            Console.WriteLine(" - " + item);
+                        }
+                    }
+                    continue;
+                }
+
+                // Add question or keyword to memory
                 memory.Add(question);
-            }
 
-            // Check if user is asking for more info
-            if (question.Contains("more") || question.Contains("explain") || question.Contains("why"))
-            {
-                ShowLoading();
-
-                switch (lastTopic)
+                // Add question or keyword to memory if not empty
+                if (!string.IsNullOrWhiteSpace(question))
                 {
-                    case "password":
-                        TypeResponse("🔐 Extra Tip: Consider using a password manager like Bitwarden or LastPass to safely store and generate strong passwords.");
-                        break;
-                    case "scam":
-                        TypeResponse("🚨 More Info: Scammers often create a sense of urgency. Always pause and verify the source before acting.");
-                        break;
-                    case "privacy":
-                        TypeResponse("🕵️ Extra Tip: Be cautious about sharing location data. Review app permissions on your devices regularly.");
-                        break;
-                    case "phishing":
-                        TypeResponse("🎣 More Info: Phishing emails often look real but contain subtle errors. Always hover over links to see where they lead.");
-                        break;
-                    default:
-                        TypeResponse("🤖 Bot: Hmm, I need a bit more context to give you more info. Try asking about passwords, scams, or privacy.");
-                        break;
+                    memory.Add(question);
                 }
-                continue;
-            }
 
-            //Random response for phishing
-            if (question.Contains("phishing"))
-            {
-                string randomTip = phishingTips[random.Next(phishingTips.Count)];
+                // Check if user is asking for more info
+                if (question.Contains("more") || question.Contains("explain") || question.Contains("why"))
+                {
+                    ShowLoading();
+
+                    switch (lastTopic)
+                    {
+                        case "password":
+                            TypeResponse("🔐 Extra Tip: Consider using a password manager like Bitwarden or LastPass to safely store and generate strong passwords.");
+                            break;
+                        case "scam":
+                            TypeResponse("🚨 More Info: Scammers often create a sense of urgency. Always pause and verify the source before acting.");
+                            break;
+                        case "privacy":
+                            TypeResponse("🕵️ Extra Tip: Be cautious about sharing location data. Review app permissions on your devices regularly.");
+                            break;
+                        case "phishing":
+                            TypeResponse("🎣 More Info: Phishing emails often look real but contain subtle errors. Always hover over links to see where they lead.");
+                            break;
+                        default:
+                            TypeResponse("🤖 Bot: Hmm, I need a bit more context to give you more info. Try asking about passwords, scams, or privacy.");
+                            break;
+                    }
+                    continue;
+                }
+
+                //Random response for phishing
+                if (question.Contains("phishing"))
+                {
+                    string randomTip = phishingTips[random.Next(phishingTips.Count)];
+                    ShowLoading();
+                    TypeResponse(randomTip);
+                    continue;
+                }
+
+                //Keyword Recognition
+                string? matchedKeyword = keywordResponses.Keys.FirstOrDefault(K => question.Contains(K));
+                if (matchedKeyword != null)
+                {
+                    ShowLoading();
+                    TypeResponse(keywordResponses[matchedKeyword]);
+                    continue;
+                }
+
+                //Default response if no keyword is matched
                 ShowLoading();
-                TypeResponse(randomTip);
-                continue;
+                TypeResponse("🤖 Bot: Hmm, I'm not sure about that. Try asking about passwords, scams, or privacy.");
             }
 
-            //Keyword Recognition
-            string? matchedKeyword = keywordResponses.Keys.FirstOrDefault(K => question.Contains(K));
-            if (matchedKeyword != null)
+            catch (Exception ex)
             {
-                ShowLoading();
-                TypeResponse(keywordResponses[matchedKeyword]);
-                continue;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\n⚠️ Oops! Something went wrong: {ex.Message}");
+                Console.ResetColor();
             }
-
-            //Default response if no keyword is matched
-            ShowLoading();
-            TypeResponse("🤖 Bot: Hmm, I’m not sure about that. Try asking about passwords, scams, or privacy.");
         }
-
     }
 
     static void DisplayHeader()
