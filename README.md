@@ -37,14 +37,11 @@ South Africa has seen a rise in cyberattacks, including phishing, malware, and i
   - "What is phishing?"
   - "How do I create a strong password?"
     
-✅ Input validation for unknown or blank entries
-
-✅ Typing effect and console UI formatting 
-
-✅ GitHub version control with CI/CD via GitHub Actions
+✅ Input validation for unknown or blank entries  
+✅ Typing effect and console UI formatting  
+✅ GitHub version control with CI/CD via GitHub Actions  
 
 ### 🧠 Part 2 Enhancements:
-
 ✅ Sentiment detection (positive/negative messages)
 ✅ Keyword-based responses using dictionaries 
 ✅ Memory of recent questions with "What did we talk about?"  
