@@ -110,20 +110,19 @@ class Program
             Console.ResetColor();
 
             // Sentiment detection
-            if (positiveWords.Any(word => question.Contains(word)))
+            if (question != null && positiveWords.Any(word => question.Contains(word)))
             {
                 ShowLoading();
                 TypeResponse("😊 I'm glad you're feeling positive! Let me know if you need help with anything.");
                 continue;
             }
 
-
-            if (negativeWords.Any(word => question.Contains(word)))
+            if (question != null && negativeWords.Any(word => question.Contains(word)))
             {
                 ShowLoading();
                 TypeResponse("😟 I'm sorry you're feeling that way. I'm here to help you stay safe online. Ask me anything!");
                 continue;
-            }   
+            }
 
             if (string.IsNullOrWhiteSpace(question))
             {
