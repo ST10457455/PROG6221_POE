@@ -88,6 +88,10 @@ class Program
         "🎣 Phishing Tip: Never click on suspicious links, even if the email looks legitimate. Always verify the sender.",
         "🎣 Phishing Tip: Look for spelling errors or strange email addresses – they’re red flags for phishing attempts."
     };
+
+    static List<string> positiveWords = new List<string> { "good", "great", "awesome", "fantastic", "thank", "thanks" };
+    static List<string> negativeWords = new List<string> { "bad", "terrible", "annoyed", "angry", "upset", "frustrated" };
+
     static Random random = new Random();
 
     static void StartChat()
@@ -104,6 +108,22 @@ class Program
             Console.Write("🧠 You: ");
             string? question = Console.ReadLine()?.ToLower().Trim();
             Console.ResetColor();
+
+            // Sentiment detection
+            if (positiveWords.Any(word => question.Contains(word)))
+            {
+                ShowLoading();
+                TypeResponse("😊 I'm glad you're feeling positive! Let me know if you need help with anything.");
+                continue;
+            }
+
+
+            if (negativeWords.Any(word => question.Contains(word)))
+            {
+                ShowLoading();
+                TypeResponse("😟 I'm sorry you're feeling that way. I'm here to help you stay safe online. Ask me anything!");
+                continue;
+            }   
 
             if (string.IsNullOrWhiteSpace(question))
             {
