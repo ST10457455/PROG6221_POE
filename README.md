@@ -2,7 +2,7 @@
 James Baker
 Student No: ST10457455
 Module: PROG6221 – Portfolio of Evidence
-Institution: [Your College Name]
+Institution: Varsity College Newlands Cape Town
 Year: 2025
 
 
