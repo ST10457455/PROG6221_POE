@@ -90,7 +90,6 @@ The chatbot should launch in the terminal. You'll hear the voice greeting (if co
 ✅ GitHub Actions – CI Screenshot
 Include a screenshot of a successful CI run (green checkmark) from the Actions tab here.
 
-
 🛠️ Technologies Used
 C# (.NET 8)
 
@@ -115,11 +114,13 @@ ChatbotApp/
 ├── .github/
 │   └── workflows/dotnet.yml  # CI config
 ├── README.md
-🧠 Future Enhancements (Part 2 & 3)
-🧩 Topic recognition (phishing, password tips, etc.)
+🧠 Future Enhancements (Part 3)
+🧩 Advanced topic recognition (phishing, password tips, social engineering)
 
-🎮 Simple games and quizzes
+🎮 Mini-games and quizzes on cybersecurity
 
-📋 Interactive tip checklist
+📋 Interactive tip checklist with progress
 
-🎥 Final video presentation 
+🎥 Final video presentation (voice + demo)
+
+
