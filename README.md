@@ -10,7 +10,11 @@ Year: 2025
 
 Welcome to the **Cybersecurity Awareness Chatbot** — a console-based virtual assistant designed to educate South African citizens on how to stay safe online. 🇿🇦
 
-This project was developed as **Part 1** of the PROG6221 Portfolio of Evidence (POE).
+This project was developed as part of the **PROG6221 Portfolio of Evidence (POE)**.
+
+- ✅ **Part 1:** Basic chatbot implementation with interactive console features  
+- 🚧 **Part 2:** Dynamic responses, sentiment detection, memory recall, keyword matching, and improved conversation flow  
+- 🔜 **Part 3:** Final polish, UI/game enhancements, and presentation video
 
 ---
 
@@ -22,19 +26,28 @@ South Africa has seen a rise in cyberattacks, including phishing, malware, and i
 
 ## 🚀 Features
 
+### ✅ Part 1:
 ✅ Voice greeting at startup  
 ✅ ASCII Art Logo for visual flair  
 ✅ Name-based personalization  
 ✅ Answers to common questions like:
-- "How are you?"
-- "What's your purpose?"
-- "What can I ask you?"
-- "What is phishing?"
-- "How do I create a strong password?"
-
+  - "How are you?"
+  - "What's your purpose?"
+  - "What can I ask you?"
+  - "What is phishing?"
+  - "How do I create a strong password?"
 ✅ Input validation for unknown or blank entries  
 ✅ Typing effect and console UI formatting  
 ✅ GitHub version control with CI/CD via GitHub Actions
+
+### 🧠 Part 2 Enhancements:
+✅ Sentiment detection (positive/negative messages)
+✅ Keyword-based responses using dictionaries
+✅ Memory of recent questions with "What did we talk about?"
+✅ Recognition of follow-up prompts like "more", "why", and "explain"
+✅ Randomized phishing tips to keep answers dynamic
+✅ Error handling and edge case responses
+✅ Modularized helper methods for cleaner code
 
 ---
 
