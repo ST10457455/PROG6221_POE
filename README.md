@@ -13,8 +13,8 @@ Welcome to the **Cybersecurity Awareness Chatbot** — a console-based virtual a
 This project was developed as part of the **PROG6221 Portfolio of Evidence (POE)**.
 
 - ✅ **Part 1:** Basic chatbot implementation with interactive console features  
-- 🚧 **Part 2:** Dynamic responses, sentiment detection, memory recall, keyword matching, and improved conversation flow  
-- 🔜 **Part 3:** Final polish, UI/game enhancements, and presentation video
+- ✅ **Part 2:** Dynamic responses, sentiment detection, memory recall, keyword matching, and improved conversation flow  
+- ✅ **Part 3:** Final polish, UI/game enhancements, and presentation video
 
 ---
 
