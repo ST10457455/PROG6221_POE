@@ -125,14 +125,3 @@ ChatbotApp/
 ├── README.md
 
 
-🧠 Future Enhancements (Part 3)
-
-🧩 Advanced topic recognition (phishing, password tips, social engineering)
-
-🎮 Mini-games and quizzes on cybersecurity
-
-📋 Interactive tip checklist with progress
-
-🎥 Final video presentation (voice + demo)
-
-
