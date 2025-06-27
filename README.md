@@ -49,6 +49,15 @@ South Africa has seen a rise in cyberattacks, including phishing, malware, and i
 ✅ Error handling and edge case responses   
 ✅ Modularized helper methods for cleaner code   
 
+### 🎨 Part 3 Enhancements:
+- GUI implementation using XAML (Windows Forms or Avalonia for cross-platform)  
+- Mini-game: Cybersecurity Quiz for interactive learning  
+- NLP simulation for flexible input recognition  
+- Activity log feature to track user interactions and responses  
+- Reminder/task assistant for cybersecurity tasks  
+- Final video presentation demo  
+- Improved user experience and polished UI elements
+
 ---
 
 ## 🖼️ ASCII Art Sample
