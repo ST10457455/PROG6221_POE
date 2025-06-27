@@ -1,9 +1,9 @@
-📢 Author
-James Baker
-Student No: ST10457455
-Module: PROG6221 – Portfolio of Evidence
-Institution: Varsity College Newlands Cape Town
-Year: 2025
+📢 Author  
+James Baker  
+Student No: ST10457455  
+Module: PROG6221 – Portfolio of Evidence  
+Institution: Varsity College Newlands Cape Town  
+Year: 2025  
 
 
 # 🛡️ Cybersecurity Awareness Chatbot (Console App)
